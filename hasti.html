@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hasti 💖</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #ffdde1, #ee9ca7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .card {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    max-width: 400px;
+    width: 90%;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 100;
+  }
+  img {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: 24px;
+    color: #d81b60;
+  }
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  .hearts {
+    font-size: 28px;
+    margin-top: 20px;
+    animation: pulse 1s infinite;
+  }
+  @keyframes pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.2);}
+    100% {transform: scale(1);}
+  }
+  .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background: #d81b60;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .btn:hover {
+    transform: scale(1.1);
+  }
+  .surprise {
+    display: none;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #6a1b9a;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  .floating-heart {
+    position: absolute;
+    font-size: 24px;
+    animation: floatUp linear infinite;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 50;
+  }
+  @keyframes floatUp {
+    0% {transform: translateY(100vh) scale(1);}
+    50% {transform: translateY(50vh) scale(1.2);}
+    100% {transform: translateY(-10vh) scale(1);}
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img src="https://i.imgur.com/4aiOUEt.jpg" alt="Hasti ❤️">
+    <h1>હસ્તી… આ શબ્દો ખાલી તારા જ માટે 💕</h1>
+    <p>
+      1. શું તું મારો પહેલો અને છેલ્લો પ્રેમ બનીશ ? ❤️<br>
+      2. શું હું તારો કાનો અને તું મારી રાધા બનીશ ? 🩷<br>
+      3. શું તું મારી જીંદગીનો એકમાત્ર સહારો બનીશ ? 🧡<br>
+      4. શું તું મારી સાથે સાત જન્મોના બંધનમાં બંધાઈશ? 💚<br>
+      5. શું તું મારા મમ્મી-પપ્પાની વહુ નહીં, પરંતુ એમની દીકરી બનીશ ? 💙<br><br>
+      અને… શું તું મારી આ વર્ષની નહીં, પરંતુ આખી જિંદગીની 💜 Valentine બનીશ ? 💖
+    </p>
+    <div class="hearts">💝💝💝</div>
+    <button class="btn" onclick="showSurprise()">YES 💖</button>
+    <div class="surprise" id="surpriseMsg">
+      🌟 Surprise! હવે અમે એકસાથે હંમેશા ખુશ રહીશું! 💕✨
+    </div>
+  </div>
+
+  <!-- Soft romantic music (requires user interaction on mobile) -->
+  <audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+<script>
+  function showSurprise() {
+    const msg = document.getElementById('surpriseMsg');
+    msg.style.display = 'block';
+    setTimeout(() => msg.style.opacity = 1, 50);
+
+    // Play music on button click (needed for mobile)
+    const music = document.getElementById('bgMusic');
+    music.play().catch(e => console.log('Music autoplay blocked'));
+  }
+
+  // Floating hearts effect
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'floating-heart';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.fontSize = 16 + Math.random() * 24 + 'px';
+    heart.style.animationDuration = 5 + Math.random() * 5 + 's';
+    heart.innerText = '💖';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 10000); // remove after 10 sec
+  }
+
+  setInterval(createHeart, 500);
+</script>
+</body>
+</html>
